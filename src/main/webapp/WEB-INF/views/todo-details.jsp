@@ -16,6 +16,8 @@ TODO todo = Service.getTodo(id);
 </head>
 <body>
 
+<%@include file="go-home.jsp" %>
+
 	<div class="container">
 
 			<div class="mb-3">

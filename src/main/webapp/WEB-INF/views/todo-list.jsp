@@ -17,57 +17,79 @@ List<TODO> todos = Service.getAllTodo();
 <title>Quick Notes: All Notes</title>
 </head>
 <body>
+<%@include file="go-home.jsp" %>
 
-	<% 
-	if(!todos.isEmpty())
-	{
-	%>
-	<div class="container text-center">
-		<h2>All Notes</h2>
-		<p>
-			<%
-			  for(TODO todo: todos)
-			  {
-			%>
-		
-			<div class="pl-5 text-left">
-				<div class="card mb-3" style="max-width: 540px;">
-			<div class="row g-0">
-				<div class="col-md-4">
-					<img src="img/notepad.png" class="img-fluid rounded-start pl-4 pt-4" alt="this image is copyrighted and all image credit goes to flaticon.com">
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title"><a href="todo-details.jsp?todo_id=<%=todo.getId() %>"><%=todo.getNoteTitle() %></a> </h5>
-						
-						<!-- Applied ellipse on card content -->
-						<span class="d-inline-block text-truncate" style="max-width: 280px;"> <%=todo.getNoteContent()  %></span>
-						
-						<p class="card-text">
-						<small class="text-body-secondary">Created on <%=todo.getCreateDate() %></small>
-						</p>
-						<a class="btn btn-danger" href="delete-todo?todo_id=<%=todo.getId() %>" >Delete</a>
-						<a class="btn btn-primary ml-1" href="edit-todo?todo_id=<%=todo.getId()%>">Edit</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="col-md-10 text-center">
 			
+				<h3>Todo List</h3>
+
+				<%
+				if (!todos.isEmpty()) {
+				%>
+				<div class="container text-center">
+					<p>
+						<%
+						for (TODO todo : todos) {
+						%>
+					
+					<div class="pl-5 text-left">
+						<div class="card mb-3" style="max-width: 540px;">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="img/notepad.png"
+										class="img-fluid rounded-start pl-4 pt-4"
+										alt="this image is copyrighted and all image credit goes to flaticon.com">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h5 class="card-title">
+											<a href="todo-details?todo_id=<%=todo.getId()%>"><%=todo.getNoteTitle()%></a>
+										</h5>
+
+										<!-- Applied ellipse on card content -->
+										<span class="d-inline-block text-truncate"
+											style="max-width: 280px;"> <%=todo.getNoteContent()%></span>
+
+										<p class="card-text">
+											<small class="text-body-secondary">Created on: <%=todo.getCreateDate()%></small>
+											<br>
+											<small class="text-body-secondary"><% if(todo.getLastUpdatedDate()==null)
+											{
+											%>
+												Updated on: NA
+											<%
+											}
+											else{
+											%>
+											   Updated on: <%=todo.getLastUpdatedDate().compareTo(todo.getCreateDate()) %> Day ago 
+											<%
+											}
+											%></small>
+										</p>
+										<a class="btn btn-danger"
+											href="delete-todo?todo_id=<%=todo.getId()%>">Delete</a> 
+											<a class="btn btn-primary ml-1"
+											href="edit-todo?todo_id=<%=todo.getId()%>">Edit</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<%
+					}
+					%>
+
+				</div>
+				<%
+				} else {
+				%>
+				<p>Empty List</p>
+				<%
+				}
+				%>
 			</div>
-
-	    <%
-			  }
-		%>
-
-	</div>
-	<%
-	}
-	else{
-	%>
-	<p>Empty List</p>	
-	<%	
-	}
-	%>
 
 </body>
 </html>

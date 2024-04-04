@@ -24,10 +24,12 @@ List<TODO> todos = Service.getAllTodo();
 				<ul class="list-group">
 					<li class="list-group-item active" aria-current="true">Menu</li>
 					<a class="list-group-item" href="add-todo">Add TODO</a>
-					<a class="list-group-item">List TODO</a>
+					<a class="list-group-item" href="todo-list">List TODO</a>
 				</ul>
 			</div>
+			
 			<div class="col-md-10 text-center">
+			
 				<h3>Todo List</h3>
 
 				<%
@@ -97,6 +99,9 @@ List<TODO> todos = Service.getAllTodo();
 				}
 				%>
 			</div>
+		
+		
+		
 		</div>
 	</div>
 </body>
