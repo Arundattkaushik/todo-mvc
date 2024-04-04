@@ -8,6 +8,7 @@
 <title>Add TODO</title>
 </head>
 <body>
+<%@include file="go-home.jsp" %>
 
 <!-- Form to take input from user  -->
 <div class="container">
